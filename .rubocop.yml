@@ -1,32 +1,82 @@
-AllCops:
-  DisplayCopNames: true
-  Exclude:
-    - 'test/samples/**/*'
-    - 'tmp/**/*'
-    - 'vendor/**/*'
-    - 'gemfiles/*'
-  TargetRubyVersion: 2.6
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
-Metrics/BlockLength:
+AllCops:
+  TargetRubyVersion: 3.1
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'Gemfile'
+    - 'tmp/**/*'
+    - 'Rakefile'
+    - 'config.ru'
+
+
+Documentation:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 120
+Documentation:
+  Enabled: false
 
-Style/Documentation:
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 3000
+
+Metrics/LineLength:
+  Max: 125
+
+Metrics/MethodLength:
+  Max: 215
+
+Metrics/ModuleLength:
+  Max: 1500
+
+Metrics/BlockLength:
+  Max: 1500
+
+Style/RescueModifier:
+  Description: 'Avoid using rescue in its modifier form.'
+  StyleGuide: '#no-rescue-modifiers'
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 110
+
+Metrics/CyclomaticComplexity:
+  Max: 110
+
+Metrics/AbcSize:
+  Max: 500
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Bundler/OrderedGems:
+  TreatCommentsAsGroupSeparators: true
+
+Style/AccessorMethodName:
   Enabled: false
 
 Security/MarshalLoad:
   Enabled: false
-  Include:
-    - 'lib/rubycritic/serializer.rb'
 
-Style/RedundantFreeze:
+Style/ClassAndModuleChildren:
   Enabled: false
-  Include:
-    - 'lib/rubycritic/core/smell.rb'
-    - 'lib/rubycritic/generators/json/simple.rb'
-    - 'lib/rubycritic/revision_comparator.rb'
-    - 'lib/rubycritic/source_control_systems/perforce.rb'
-    - 'lib/rubycritic/source_locator.rb'
-    - 'lib/rubycritic/version.rb'
+
+Style/HashSyntax:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
